@@ -14,9 +14,9 @@ set -euo pipefail
 # shellcheck source=./bash.sh
 # . ~/wiki/static/build/bash.sh # for 'get_image_files', 'green', 'red'
 
-red () { echo -e "\e[41m$@\e[0m"; }
+red () { echo -e "\e[41m$*\e[0m"; }
 
-green () { echo -e "\e[32m$@\e[0m"; }
+green () { echo -e "\e[32m$*\e[0m"; }
 
 warn () { printf 'Warning: %s\n' "$*" >&2; }
 
@@ -116,7 +116,7 @@ args=("$@")
 
 if [ ${#args[@]} -eq 0 ]; then
     get_image_files args
-    green "Attempting to use implied arguments: ${args[@]}"
+    green "Attempting to use implied arguments: ${args[*]}"
 fi
 
 if [ ${#args[@]} -eq 0 ]; then

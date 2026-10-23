@@ -24,19 +24,19 @@ export N="14"
 
 set -e
 
-bold () { echo -e "\033[1m$@\033[0m"; }
-red  () { echo -e "\e[41m$@\e[0m"; }
+bold () { echo -e "\033[1m$*\033[0m"; }
+red  () { echo -e "\e[41m$*\e[0m"; }
 # Green text (uses foreground color for success messages)
 green () {
   # \e[32m sets foreground to green
   # \e[0m resets all attributes
-  echo -e "\e[32m$@\e[0m"
+  echo -e "\e[32m$*\e[0m"
 }
 # Yellow text (uses foreground color for warnings)
 yellow () {
   # \e[33m sets foreground to yellow
   # \e[0m resets all attributes
-  echo -e "\e[33m$@\e[0m"
+  echo -e "\e[33m$*\e[0m"
 }
 ## function to wrap checks and print red-highlighted warning if non-zero output (self-documenting); if there is output and it takes >30s, the total elapsed time will be printed as well to help locate sub-optimal codes or hotspots in scripts:
 wrap () {
@@ -1633,7 +1633,7 @@ if (( $# == 1 )) && [[ $1 =~ \.png$ && $(cd ~/wiki/ && git ls-files --error-unma
    then gwmv "$1" "${1%.png}.jpg"
 else
     if (( $# != 2 )); then
-        red "Need two arguments: OLD file and NEW file! Only got: $@" >&2
+        red "Need two arguments: OLD file and NEW file! Only got: $*" >&2
         return 2
     else
 
